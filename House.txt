@@ -1,0 +1,124 @@
+
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]>
+<svg version='1.1' xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  
+  width="470px" height="250px" style="background-color:#6fa8dc" preserveAspectRatio="xMidYMid">
+  <!--Reference:Introduction to Computer Graphics
+    by David J. Eck, Hobart and William Smith Colleges(2018)-->
+
+  <!--This Animation example displays the sun rotating from 0 to 10 seconds, 
+      and then shows trees that grows during the period from 3 seconds to 20
+      seconds after the image loads. A blue square moves across the bottom 
+       of the image repeatedly-->
+
+  <!--sun-->
+  <g height="100" width="100">
+    <circle id="sun"
+      cx="50"
+      cy="50"
+      r="40"
+      stroke="orange"
+      stroke-width="3"
+      fill="yellow"
+      transform="rotate(0)"
+    />
+    <!--rotating the sun-->
+    <animateTransform
+      attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      from="0"
+      to="360"
+      dur="10s"
+      fill="remove"
+      repeatCount="indefinite"
+    />
+    <line x1="-0.75" y1="0" x2="0.75" y2="0" />
+    <line x1="-0.75" y1="0" x2="0.75" y2="0" transform="rotate(30)" />
+    <line x1="-0.75" y1="0" x2="0.75" y2="0" transform="rotate(60)" />
+    <line x1="-0.75" y1="0" x2="0.75" y2="0" transform="rotate(90)" />
+    <line x1="-0.75" y1="0" x2="0.75" y2="0" transform="rotate(120)" />
+    <line x1="-0.75" y1="0" x2="0.75" y2="0" transform="rotate(150)" />
+    <circle cx="0" cy="0" r="0.5" />
+  </g>
+  <!-- Background Wall -->
+  <rect id="background" height="1000" width="800" y="220" />
+  <!-- Chimney -->
+  <rect height="21" width="14" fill="#FBF6A7" x="98" y="127" />
+  <rect height="4" width="20" fill="#E04E27" x="95" y="125" />
+  <!-- House -->
+  <rect height="84" width="162" fill="#FBF6A7" x="90" y="198" />
+  <polygon id="roof" points="250,148 262,203 80,203 87,148 327,148" />
+  <!-- Windows -->
+  <g transform="translate(72,110)" id="window">
+    <!-- Window R  -->
+    <rect x="36" y="113" width="14" height="14" />
+    <rect x="52" y="113" width="14" height="14" />
+    <rect x="36" y="129" width="14" height="14" />
+    <rect x="52" y="129" width="14" height="14" />
+    <line x1="34" y1="147" x2="69" y2="147" />
+    <!-- Window L  -->
+    <rect x="130" y="113" width="14" height="14" />
+    <rect x="146" y="113" width="14" height="14" />
+    <rect x="130" y="129" width="14" height="14" />
+    <rect x="146" y="129" width="14" height="14" />
+    <line x1="128" y1="147" x2="162" y2="147" />
+  </g>
+  <!-- Door -->
+  <rect height="60" width="36" fill="#CC0000" x="153" y="222" rx="5" ry="5" />
+  <rect id="knob" height="8" width="2" fill="#FBF6A7" x="183" y="252" />
+
+  <!--moving Square-->
+  <!-- A blue square with an animated x attribute transform to make
+     it move along the bottom of the picture.The animation takes
+     7 seconds and repeats forever. -->
+  <rect x="0" y="210"
+    width="40"
+    height="40"
+    fill="blue"
+  >
+    <animate attributeName="x"
+      dur="7s"
+      from="0"
+      to="430"
+      repeatCount="indefinite"
+    />
+  </rect>
+  <!--Trees-->
+  <!-- The "trees" are made of a rectangle and a triangle.  
+     The tree has the center of its base at (0,0) and its tip at (0,200).  
+     In the default coordinate system, it is pointed downwards.
+     A scale(1,-1) flips vertically so that its tip is now
+     at (0,-200) with the base still at (0,0). It is
+     translated by 400 horizontally, moving the base
+     to (400,200) and the tip to (0,0).  -->
+
+  <g transform="translate(400,200) scale(1,-1)">
+    <g>
+      <rect x="-15" y="0" width="30" height="40" fill="rgb(150,100,0)" />
+      <polygon points="-60,40 60,40 0,200" fill="green" />
+    </g>
+  </g>
+
+  <!-- This is a copy of the same tree with a different translation and
+a transform animation.The animation makes it grow from size
+0 to 0.6 times its normal size.  The animation starts five seconds    after the image loads and last for a duration of 10 seconds.
+The fill="freeze" makes it keep the final value after the animation ends. The scale(0,0) on the <g> element applies until the animation
+starts, so the tree is not visible until then.  -->
+
+  <g transform="translate(300,170) scale(1,-1)">
+    <g transform="scale(0,0)">
+      <animateTransform
+        attributeName="transform"
+        type="scale"
+        from="0,0"
+        to="0.6,0.6"
+        begin="5s"
+        dur="10s"
+        fill="freeze"
+      />
+      <rect x="-15" y="0" width="30" height="40" fill="rgb(150,100,0)" />
+      <polygon points="-60,40 60,40 0,200" fill="green" />
+    </g>
+  </g>
+</svg> <!-- end -->
